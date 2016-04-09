@@ -29,17 +29,16 @@ namespace EmployeeAssist.WebApi.Controllers
         public void Create([FromBody]EditorModel model)
         {
             IMongoDAL dal = new MongoDAL();
-            dal.Insert(model.Country, model.State, model.City, model.Category, model.SubCategory, 0, model.Information[0].Description,System.DateTime.Now);
+            dal.Insert(model.Country, model.State, model.City, model.Category, model.SubCategory, 0, model.Information[0].Description);
         }
 
         // GET: Editor
         [Route("api/Update/like")]
         [HttpPost]
-        public int Update([FromBody]Information model)
+        public ListItem Update([FromBody]Information model)
         {
             IMongoDAL dal = new MongoDAL();
-            return dal.Like(model.Id);
-            //dal.li(model.Country, model.State, model.City, model.Category, model.SubCategory, model.Likes, model.Descrption);
+            return new ListItem { Id= "Like", Value= dal.Like(model.Id).ToString() };
         }
 
     }
