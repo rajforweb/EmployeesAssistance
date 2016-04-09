@@ -35,6 +35,10 @@
             <center>
                 <input class="btn btn-primary" type="submit" value="Submit">
             </center>
+            @if (Model.save)
+            {
+                <div class="alert-info"> Data saved successfully!!!</div>
+            }
         </form>
 
        

@@ -31,19 +31,25 @@ namespace EmployeeAssistance.Controllers
         [HttpPost]
         public ActionResult Index(ReaderViewModel model)
         {
-            
+
+            model.CountryOptions = defaultListItem;
+            model.StateOptions = defaultListItem;
+            model.CityOptions = defaultListItem;
+            model.CategoryOptions = defaultListItem;
+            model.SubCategoryOptions = defaultListItem;
 
             EditorRepository repo = new EditorRepository();
             repo.AddAssistData(model);
 
-            //ReaderRepository repoReader = new ReaderRepository();
+            ReaderRepository repoReader = new ReaderRepository();
             //CategoryRepository catRepo = new CategoryRepository();
             //ReaderViewModel models = new ReaderViewModel();
-            //model.CountryOptions = repoReader.GetCountry();
+            model.CountryOptions = repoReader.GetCountry();
             //model.StateOptions = defaultListItem;
             //model.CityOptions = defaultListItem;
             //model.CategoryOptions = catRepo.GetCategory();
-
+            model.save = true;
+            model.information[0].Description = "";
             return View(model);
         }
     }
