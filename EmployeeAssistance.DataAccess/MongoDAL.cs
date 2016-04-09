@@ -80,8 +80,8 @@ namespace EmployeeAssistance.DataAccess
             var record = new BsonDocument
             {
                 { "Country" , country },
-                { "State", state},
-                { "City", city },
+                { "State", state??""},
+                { "City", city??"" },
                 { "Category", category },
                 { "SubCategory" , subcategory },
                 { "Likes" , Likes },
