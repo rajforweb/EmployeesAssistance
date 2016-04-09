@@ -12,7 +12,7 @@ namespace EmployeeAssist.WebApi.Controllers
         // GET: Editor
         [Route("api/Read")]
         [HttpGet]
-        public List<Information> GetAllRecords([FromBody]CategoryModel model)
+        public List<Information> GetAllRecords([FromUri]CategoryModel model)
         {
             IMongoDAL dal = new MongoDAL();
             var result = dal.GetInformation(model.Country, model.State, model.City, model.Category, model.SubCategory);

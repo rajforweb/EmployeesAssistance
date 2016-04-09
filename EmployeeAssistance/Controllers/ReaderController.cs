@@ -56,5 +56,15 @@ namespace EmployeeAssistance.Controllers
             return null;
 
         }
+
+        [HttpGet]
+        public JsonResult UpdateLike(string informationId)
+        {
+            JsonResult result = new JsonResult();
+            result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+
+            return null;
+
+        }
     }
 }
