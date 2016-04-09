@@ -57,7 +57,7 @@
             if (data != null && data.Value != null) {
                 likeSelector = $(selector).parent().find(".like");
                 if (likeSelector.length > 0) {
-                    likeSelector.html(data.Value)
+                    likeSelector.html(data.Value);
                 }
             }
         });
