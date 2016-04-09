@@ -67,11 +67,12 @@ namespace EmployeeAssistance.Controllers
         {
             JsonResult result = new JsonResult();
             result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
-
-            return null;
-
+            ReaderRepository repo = new ReaderRepository();
+            var listitem = repo.UpdateLike(informationId);
+            result.Data = listitem;
+            return result;
         }
 
-      
+    
     }
 }

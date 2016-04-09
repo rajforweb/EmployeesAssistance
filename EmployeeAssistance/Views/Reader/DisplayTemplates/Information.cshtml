@@ -1,7 +1,7 @@
 ﻿@model EmployeeAssistance.Models.Information
 
 <div class="row">
-    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.Id, new { @id = "InformationId", @class="information"} )
     <div class="col-sm-12">
         <h3>Description:</h3>
         <p>@Model.Description</p>
@@ -13,7 +13,7 @@
             <div>
                 <button class="btn-primary btn-sm btn-default like-btn" type="button" id="btnLikes">
                     <span class="glyphicon glyphicon-thumbs-up"></span>Liked
-                    <span class="badge like-badge active">@Model.Likes</span>
+                    <span class="badge like-badge active like">@Model.Likes</span>
                 </button>
             </div>
         </div>

@@ -17,6 +17,8 @@
         updateContextualSelect(url, selector);
     }
 
+
+
     function getCities(state, selector) {
         var url = "Reader/GetCities?state=" + encodeURIComponent(state);
         updateContextualSelect(url, selector);
@@ -44,13 +46,25 @@
         updateContextualSelect(url, selector)
     }
 
-    function updateLikes(likes)
+    function updateLikes(likes,selector)
     {
         //Ajax Post and then increment the Likes
-        var url = "api/UpdateLikes?";
 
-        if (category != null && category != "")
-            url = url + "category=" + encodeURIComponent(category);
+        
+        var url = "Reader/UpdateLike?informationId=" + $(selector).val();
+        $.get(url, function (data) {
+
+            if (data != null && data.Value != null) {
+                likeSelector = $(selector).parent().find(".like");
+                if (likeSelector.length > 0) {
+                    likeSelector.html(data.Value)
+                }
+            }
+        });
+
+
+        //if (category != null && category != "")
+        //    url = url + "category=" + encodeURIComponent(category);
     }
 
     $("#ddCountry").on('change', function () {
@@ -70,7 +84,7 @@
     });
 
     $("#btnLikes").on('click', function () {
-        updateLikes(this.value);
-        $("#btnLikes").html = this.value + 1;
+        var selector = this.closest("row").find(".information");
+        updateLikes(this.value, selector);
     });
 });
