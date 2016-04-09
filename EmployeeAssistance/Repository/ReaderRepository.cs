@@ -78,22 +78,8 @@ namespace EmployeeAssistance.Repository
             //call API
             HttpClient client = new HttpClient();
 
-            if (string.IsNullOrEmpty(model.State) && string.IsNullOrEmpty(model.City))
-            {
-                client.BaseAddress = new Uri(BaseAddress + "/api/Read?Country=" + model.Country + "&State=" + model.State + "&City=" + model.City + "&Category=" + model.Category + "&SubCategory=" + model.SubCategory);
-
-            }
-            else if (string.IsNullOrEmpty(model.State))
-            {
-                client.BaseAddress = new Uri(BaseAddress + "/api/Read?Country=" + model.Country + "&City=" + model.City + "&Category=" + model.Category + "&SubCategory=" + model.SubCategory);
-
-            }
-            else if (string.IsNullOrEmpty(model.City))
-            {
-                client.BaseAddress = new Uri(BaseAddress + "/api/Read?Country=" + model.Country + "&State=" + model.State + "&Category=" + model.Category + "&SubCategory=" + model.SubCategory);
-
-            }
-
+            client.BaseAddress = new Uri(BaseAddress + "/api/Read?Country=" + model.Country + "&State=" + model.State + "&City=" + model.City + "&Category=" + model.Category + "&SubCategory=" + model.SubCategory);
+            
             List<Information> output = new List<Information>();
             using (client)
             {
