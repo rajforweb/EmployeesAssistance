@@ -35,11 +35,10 @@ namespace EmployeeAssist.WebApi.Controllers
         // GET: Editor
         [Route("api/Update/like")]
         [HttpPost]
-        public int Update([FromBody]Information model)
+        public ListItem Update([FromBody]Information model)
         {
             IMongoDAL dal = new MongoDAL();
-            return dal.Like(model.Id);
-            //dal.li(model.Country, model.State, model.City, model.Category, model.SubCategory, model.Likes, model.Descrption);
+            return new ListItem { Id= "Like", Value= dal.Like(model.Id).ToString() };
         }
 
     }
