@@ -29,7 +29,7 @@ namespace EmployeeAssist.WebApi.Controllers
         public void Create([FromBody]EditorModel model)
         {
             IMongoDAL dal = new MongoDAL();
-            dal.Insert(model.Country, model.State, model.City, model.Category, model.SubCategory, 0, model.Information[0].Description,System.DateTime.Now);
+            dal.Insert(model.Country, model.State, model.City, model.Category, model.SubCategory, 0, model.Information[0].Description);
         }
 
         // GET: Editor
