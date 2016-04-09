@@ -231,6 +231,7 @@
     <Compile Include="Models\ReaderViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CategoryRepository.cs" />
+    <Compile Include="Repository\EditorRepository.cs" />
     <Compile Include="Repository\ReaderRepository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
