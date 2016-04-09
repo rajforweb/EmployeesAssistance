@@ -67,7 +67,7 @@ namespace EmployeeAssistance.DataAccess
         }
 
 
-        void IMongoDAL.Insert(string country, string state, string city, string category, string subcategory, int Likes, string Description, DateTime PostDate)
+        void IMongoDAL.Insert(string country, string state, string city, string category, string subcategory, int Likes, string Description)
         {
             var connectionString = "mongodb://localhost:27017";
             var client = new MongoClient(connectionString);
