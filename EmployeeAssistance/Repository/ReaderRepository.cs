@@ -29,7 +29,7 @@ namespace EmployeeAssistance.Repository
             output.ToList().ForEach(item => response.Add(new ListItem() { Id = item.Key, Value = item.Value }));
 
             return response;
-            
+
         }
 
         public List<ListItem> GetStates(string countryId)
@@ -73,11 +73,26 @@ namespace EmployeeAssistance.Repository
             return response;
         }
 
-        public List<Information> GetRecors(ReaderViewModel model)
+        public List<Information> GetRecords(ReaderViewModel model)
         {
             //call API
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(BaseAddress + "/api/Read?Country=" + model.Country + "&State=" + model.State + "&City=" + model.City + "&Category=" + model.Category + "&SubCategory=" + model.SubCategory);
+
+            if (string.IsNullOrEmpty(model.State) && string.IsNullOrEmpty(model.City))
+            {
+                client.BaseAddress = new Uri(BaseAddress + "/api/Read?Country=" + model.Country + "&State=" + model.State + "&City=" + model.City + "&Category=" + model.Category + "&SubCategory=" + model.SubCategory);
+
+            }
+            else if (string.IsNullOrEmpty(model.State))
+            {
+                client.BaseAddress = new Uri(BaseAddress + "/api/Read?Country=" + model.Country + "&City=" + model.City + "&Category=" + model.Category + "&SubCategory=" + model.SubCategory);
+
+            }
+            else if (string.IsNullOrEmpty(model.City))
+            {
+                client.BaseAddress = new Uri(BaseAddress + "/api/Read?Country=" + model.Country + "&State=" + model.State + "&Category=" + model.Category + "&SubCategory=" + model.SubCategory);
+
+            }
 
             List<Information> output = new List<Information>();
             using (client)

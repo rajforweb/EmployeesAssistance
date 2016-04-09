@@ -21,8 +21,7 @@ namespace EmployeeAssistance.DataAccess
             var builders = Builders<BsonDocument>.Filter;
 
             var filter = builders.Eq("Country", country);
-            if (!string.IsNullOrEmpty(state))
-            {
+            if (!string.IsNullOrEmpty(state)){
                 filter = filter & builders.Eq("State", state);
             }
             if (!string.IsNullOrEmpty(city))
