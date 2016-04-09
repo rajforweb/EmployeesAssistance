@@ -14,5 +14,6 @@ namespace EmployeeAssistance.DataAccess
         void InsertCategorySubCategory(string category, string subcategory);
         List<BsonDocument> GetCategorySubCategory();
         List<BsonDocument> GetSubCategory(string category);
+        int Like(string informationId);
     }
 }

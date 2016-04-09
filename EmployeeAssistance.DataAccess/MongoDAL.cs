@@ -111,6 +111,11 @@ namespace EmployeeAssistance.DataAccess
             collection.InsertOne(record);
         }
 
+        public int Like(string informationId)
+        {
+            return 0;
+        }
+
     }
 
 }

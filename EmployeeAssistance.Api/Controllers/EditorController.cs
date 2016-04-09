@@ -33,12 +33,12 @@ namespace EmployeeAssist.WebApi.Controllers
         }
 
         // GET: Editor
-        [Route("api/Update")]
+        [Route("api/Update/like")]
         [HttpPost]
-        public void Update([FromBody]EditorModel model)
+        public int Update([FromBody]Information model)
         {
             IMongoDAL dal = new MongoDAL();
-            dal.LIK
+            return dal.Like(model.Id);
             //dal.li(model.Country, model.State, model.City, model.Category, model.SubCategory, model.Likes, model.Descrption);
         }
 
