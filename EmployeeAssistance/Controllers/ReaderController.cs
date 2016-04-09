@@ -10,6 +10,7 @@ namespace EmployeeAssistance.Controllers
 {
     public class ReaderController : Controller
     {
+        List<ListItem> defaultListItem = new List<ListItem>() { new ListItem() { Id = "", Value = "---select---" } };
         // GET: Reader
         public ActionResult Index()
         {
@@ -17,10 +18,10 @@ namespace EmployeeAssistance.Controllers
             CategoryRepository catRepo = new CategoryRepository();
             ReaderViewModel model = new ReaderViewModel();
             model.CountryOptions = repo.GetCountry();
-            model.StateOptions = repo.GetStates();
-            model.CityOptions = repo.GetCity();
+            model.StateOptions = defaultListItem;
+            model.CityOptions = defaultListItem;
             model.CategoryOptions = catRepo.GetCategory();
-            //model.SubCategoryOptions = catRepo.GetSubCategory();
+            model.SubCategoryOptions = catRepo.GetSubCategory();
 
             return View(model);
         }

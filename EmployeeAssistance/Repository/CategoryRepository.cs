@@ -9,7 +9,7 @@ namespace EmployeeAssistance.Repository
 {
     public class CategoryRepository
     {
-        string BaseAddress = "http://localhost:";
+        string BaseAddress = "http://localhost:52886";
         public void AddCategory(CategoryModel model)
         {
             //call API
@@ -28,7 +28,7 @@ namespace EmployeeAssistance.Repository
             //call API
             HttpClient client = new HttpClient();
             Dictionary<string, string> output = null;
-            client.BaseAddress = new Uri(BaseAddress + "/api/SubCategory");
+            client.BaseAddress = new Uri(BaseAddress + "/api/SubCategories");
             using (client)
             {
                 var response = client.PostAsJsonAsync<CategoryModel>("", model);
@@ -40,7 +40,22 @@ namespace EmployeeAssistance.Repository
         {
             //call API
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(BaseAddress + "/api/GetCategories");
+            client.BaseAddress = new Uri(BaseAddress + "/api/Categories");
+
+            List<ListItem> output = new List<ListItem>();
+            using (client)
+            {
+                var result = client.GetAsync("").Result;
+                output = result.Content.ReadAsAsync<List<ListItem>>().Result;
+            }
+            return output;
+        }
+
+        public List<ListItem> GetSubCategory()
+        {
+            //call API
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(BaseAddress + "/api/SubCategories");
 
             List<ListItem> output = new List<ListItem>();
             using (client)
