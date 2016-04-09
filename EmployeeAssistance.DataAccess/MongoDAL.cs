@@ -119,17 +119,25 @@ namespace EmployeeAssistance.DataAccess
             var db = client.GetDatabase("assist");
             var collection = db.GetCollection<BsonDocument>("employeeassist");
 
-            var filter = Builders<BsonDocument>.Filter.Eq("_id",informationId);
+            var filter = Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(informationId));
 
+            Int32 likes = 0;
             var result = collection.Find(filter).ToList();
-            var likes = Convert.ToInt32(result[0]["Likes"]);
-            likes += 1;
+            if (result.Any())
+            {
 
-            var update = Builders<BsonDocument>.Update.Set("Likes", likes);
 
-            collection.UpdateOne(filter,update);
+                likes = Convert.ToInt32(result[0]["Likes"]);
+                likes += 1;
+
+                var update = Builders<BsonDocument>.Update.Set("Likes", likes);
+
+                collection.UpdateOne(filter, update);
+                return likes;
+
+            }
+
             return likes;
-
         }
 
     }
