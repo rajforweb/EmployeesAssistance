@@ -36,6 +36,21 @@ namespace EmployeeAssistance.Repository
             }
         }
 
+        public List<ListItem> GetCategory()
+        {
+            //call API
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(BaseAddress + "/api/GetCategories");
+
+            List<ListItem> output = new List<ListItem>();
+            using (client)
+            {
+                var result = client.GetAsync("").Result;
+                output = result.Content.ReadAsAsync<List<ListItem>>().Result;
+            }
+            return output;
+        }
+
         public List<ListItem> GetSubCategory(string category)
         {
             //call API
