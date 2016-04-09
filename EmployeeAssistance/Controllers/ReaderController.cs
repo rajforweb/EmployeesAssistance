@@ -26,6 +26,21 @@ namespace EmployeeAssistance.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public ActionResult Index(ReaderViewModel model)
+        {
+            var repoReader = new ReaderRepository();
+            CategoryRepository catRepo = new CategoryRepository();
+
+            model.CountryOptions = repoReader.GetCountry();
+            model.StateOptions = (!string.IsNullOrWhiteSpace(model.Country)) ? repoReader.GetStates(model.Country) : defaultListItem;
+            model.CityOptions = (!string.IsNullOrWhiteSpace(model.State)) ? repoReader.GetCity(model.State) : defaultListItem;
+            model.CategoryOptions = catRepo.GetCategory();
+            model.SubCategoryOptions = defaultListItem;
+            model.information = repoReader.GetRecords(model);
+
+            return View(model);
+        }
 
         [HttpGet]
         public JsonResult GetStates(string country)
