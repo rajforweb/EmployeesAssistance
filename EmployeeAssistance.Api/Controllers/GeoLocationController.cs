@@ -13,11 +13,10 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using EmployeeAssist.WebApi.Models;
-using EmployeeAssist.WebApi.Providers;
-using EmployeeAssist.WebApi.Results;
-using System.Linq;
 using EmployeeAssistance.Api.Models;
+using EmployeeAssistance.Api.Providers;
+using EmployeeAssistance.Api.Results;
+using System.Linq;
 
 namespace EmployeeAssist.WebApi.Controllers
 {

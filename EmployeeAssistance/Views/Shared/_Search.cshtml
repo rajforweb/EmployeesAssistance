@@ -1,0 +1,47 @@
+﻿@model EmployeeAssistance.Models.ReaderViewModel
+<fieldset class="form-group ">
+    <div class="col-sm-12">
+        @*<label for="ddCountry">Country</label>*@
+        @Html.LabelFor(model => model.Country)
+        @Html.DropDownListFor(m => m.Country,
+             new SelectList(Model.CountryOptions, "id", "value", Model.CountryOptions.FirstOrDefault().id), new { @class = "form-control ", @id = "ddCountry" })
+
+    </div>
+</fieldset>
+<fieldset class="form-group">
+    <div class="row col-sm-6">
+        <div class="col-sm-12">
+            @Html.LabelFor(model => model.State)
+            @Html.DropDownListFor(m => m.State,
+       new SelectList(Model.StateOptions, "id", "value", Model.StateOptions.FirstOrDefault().id), new { @class = "form-control ", @id = "ddState" })
+
+        </div>
+    </div>
+    <div class="row col-sm-6 col-sm-offset-0">
+        <div class="col-sm-12 col-sm-offset-0">
+            @Html.LabelFor(model => model.City)
+            @Html.DropDownListFor(m => m.City,
+             new SelectList(Model.CityOptions, "id", "value", Model.CityOptions.FirstOrDefault().id), new { @class = "form-control ", @id = "ddCity" })
+        </div>
+    </div>
+</fieldset>
+<fieldset class="form-group">
+    <div class="row col-sm-6">
+        <div class="col-sm-12">
+            @Html.LabelFor(model => model.Category)
+            @Html.DropDownListFor(m => m.Category,
+                                    new SelectList(Model.CategoryOptions, "id", "value", Model.CategoryOptions.FirstOrDefault().id), new { @class = "form-control", @id = "ddCategory" })
+            @*<select name="Category" class="form-control" id="ddCategory">
+                    <option>Accomodation</option>
+                </select>*@
+        </div>
+    </div>
+    <div class="row col-sm-6 col-sm-offset-0">
+        <div class="col-sm-12 ">
+            @Html.LabelFor(model => model.SubCategory)
+            @Html.DropDownListFor(m => m.SubCategory,
+                                    new SelectList(Model.SubCategoryOptions, "id", "value", Model.SubCategoryOptions.FirstOrDefault().id), new { @class = "form-control", @id = "ddSubCategory" })
+
+        </div>
+    </div>
+</fieldset>
