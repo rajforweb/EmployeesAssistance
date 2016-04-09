@@ -10,7 +10,7 @@ namespace EmployeeAssistance.DataAccess
     public interface IMongoDAL
     {
         List<BsonDocument> GetInformation(string country, string state, string city, string category, string subcategory);
-        void Insert(string country, string state, string city, string category, string subcategory, int Likes, string Description);
+        void Insert(string country, string state, string city, string category, string subcategory, int Likes, string Description, DateTime PostDate);
         void InsertCategorySubCategory(string category, string subcategory);
         List<BsonDocument> GetCategorySubCategory();
         List<BsonDocument> GetSubCategory(string category);

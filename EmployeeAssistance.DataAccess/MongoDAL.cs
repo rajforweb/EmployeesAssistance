@@ -26,7 +26,7 @@ namespace EmployeeAssistance.DataAccess
         }
                
 
-        void IMongoDAL.Insert(string country, string state, string city, string category, string subcategory, int Likes, string Description)
+        void IMongoDAL.Insert(string country, string state, string city, string category, string subcategory, int Likes, string Description, DateTime PostDate)
         {
             var connectionString = "mongodb://localhost:27017";
             var client = new MongoClient(connectionString);
@@ -42,7 +42,8 @@ namespace EmployeeAssistance.DataAccess
                 { "Category", category },
                 { "SubCategory" , subcategory },               
                 { "Likes" , Likes },
-                { "Description" , Description }
+                { "Description" , Description },
+                { "PostDate", PostDate }
 
             };
 
