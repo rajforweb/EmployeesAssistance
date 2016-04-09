@@ -18,6 +18,7 @@ namespace EmployeeAssistance
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Reader", action = "Index", id = UrlParameter.Optional }
             );
+
         }
     }
 }
