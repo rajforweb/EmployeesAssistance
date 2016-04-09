@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeAssistance.DataAccess
 {
-    interface IMongoDAL
+    public interface IMongoDAL
     {
         List<BsonDocument> GetInformation(string country, string state, string city, string category, string subcategory);
         void Insert(string country, string state, string city, string category, string subcategory, int Likes, string Description, DateTime PostDate);
