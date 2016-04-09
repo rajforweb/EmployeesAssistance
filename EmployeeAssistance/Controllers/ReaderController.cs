@@ -25,5 +25,26 @@ namespace EmployeeAssistance.Controllers
 
             return View(model);
         }
+
+
+        [HttpGet]
+        public JsonResult GetStates(string country)
+        {
+            JsonResult result = new JsonResult();
+            result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+            ReaderRepository repo = new ReaderRepository();
+            result.Data = repo.GetStates(country);
+            return result;
+        }
+
+        [HttpGet]
+        public JsonResult GetCities(string state)
+        {
+            JsonResult result = new JsonResult();
+            result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+            ReaderRepository repo = new ReaderRepository();
+            result.Data = repo.GetCity(state);
+            return result;
+        }
     }
 }

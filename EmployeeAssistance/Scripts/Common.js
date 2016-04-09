@@ -6,7 +6,7 @@
             $(selector).empty();
             $(data).each(function (i, val) {
 
-                $(selector).append('<option value=' + val.id + '>' + val.value + '</option>');
+                $(selector).append('<option value=' + val.Id + '>' + val.Value + '</option>');
             })
         });
     }
@@ -17,8 +17,8 @@
         updateContextualSelect(url, selector);
     }
 
-    function getCities(country, state, selector) {
-        var url = "Reader/GetCities?country=" + encodeURIComponent(country) + "&State=" + encodeURIComponent(state);
+    function getCities(state, selector) {
+        var url = "Reader/GetCities?state=" + encodeURIComponent(state);
         updateContextualSelect(url, selector);
     }
 
@@ -58,7 +58,7 @@
     });
 
     $("#ddState").on('change', function () {
-        getCities($("#ddCountry").val(), this.value, "#ddCity");
+        getCities(this.value, "#ddCity");
     });
 
     //$("#ddCity").on('change', function () {
