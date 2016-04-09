@@ -55,9 +55,9 @@
         $.get(url, function (data) {
 
             if (data != null && data.Value != null) {
-                likeSelector = $(selector).parent().find(".like");
-                if (likeSelector.length > 0) {
-                    likeSelector.html(data.Value);
+              var likeSelector = $(selector).parent().find(".like");
+                if ($(likeSelector).length > 0) {
+                    $(likeSelector).html(data.Value);
                 }
             }
         });
@@ -84,7 +84,7 @@
     });
 
     $("#btnLikes").on('click', function () {
-        var selector = this.closest("row").find(".information");
+        var selector = this.closest(".information").find(".Information-hidden");
         updateLikes(this.value, selector);
     });
 });
