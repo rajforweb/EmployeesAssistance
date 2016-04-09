@@ -11,5 +11,6 @@ namespace EmployeeAssistance.Api.Models
         string Id { get; set; }
         string Description { get; set; }
         string Likes { get; set; }
+        string PostDate { get; set; }
     }
 }
