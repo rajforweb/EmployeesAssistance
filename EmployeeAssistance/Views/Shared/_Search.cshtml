@@ -4,7 +4,7 @@
         @*<label for="ddCountry">Country</label>*@
         @Html.LabelFor(model => model.Country)
         @Html.DropDownListFor(m => m.Country,
-             new SelectList(Model.CountryOptions, "Id", "Value", Model.CountryOptions.FirstOrDefault().id), new { @class = "form-control ", @id = "ddCountry" })
+             new SelectList(Model.CountryOptions, "Id", "Value", Model.CountryOptions.FirstOrDefault().Id), new { @class = "form-control ", @id = "ddCountry" })
 
     </div>
 </fieldset>
@@ -13,7 +13,7 @@
         <div class="col-sm-12">
             @Html.LabelFor(model => model.State)
             @Html.DropDownListFor(m => m.State,
-       new SelectList(Model.StateOptions, "Id", "Value", Model.StateOptions.FirstOrDefault().id), new { @class = "form-control ", @id = "ddState" })
+       new SelectList(Model.StateOptions, "Id", "Value", Model.StateOptions.FirstOrDefault().Id), new { @class = "form-control ", @id = "ddState" })
 
         </div>
     </div>
@@ -21,7 +21,7 @@
         <div class="col-sm-12 col-sm-offset-0">
             @Html.LabelFor(model => model.City)
             @Html.DropDownListFor(m => m.City,
-             new SelectList(Model.CityOptions, "Id", "Value", Model.CityOptions.FirstOrDefault().id), new { @class = "form-control ", @id = "ddCity" })
+             new SelectList(Model.CityOptions, "Id", "Value", Model.CityOptions.FirstOrDefault().Id), new { @class = "form-control ", @id = "ddCity" })
         </div>
     </div>
 </fieldset>
@@ -30,7 +30,7 @@
         <div class="col-sm-12">
             @Html.LabelFor(model => model.Category)
             @Html.DropDownListFor(m => m.Category,
-                                    new SelectList(Model.CategoryOptions, "Id", "Value", Model.CategoryOptions.FirstOrDefault().id), new { @class = "form-control", @id = "ddCategory" })
+                                    new SelectList(Model.CategoryOptions, "Id", "Value", Model.CategoryOptions.FirstOrDefault().Id), new { @class = "form-control", @id = "ddCategory" })
             @*<select name="Category" class="form-control" id="ddCategory">
                     <option>Accomodation</option>
                 </select>*@
@@ -40,7 +40,7 @@
         <div class="col-sm-12 ">
             @Html.LabelFor(model => model.SubCategory)
             @Html.DropDownListFor(m => m.SubCategory,
-                                    new SelectList(Model.SubCategoryOptions, "Id", "Value", Model.SubCategoryOptions.FirstOrDefault().id), new { @class = "form-control", @id = "ddSubCategory" })
+                                    new SelectList(Model.SubCategoryOptions, "Id", "Value", Model.SubCategoryOptions.FirstOrDefault().Id), new { @class = "form-control", @id = "ddSubCategory" })
 
         </div>
     </div>

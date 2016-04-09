@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace EmployeeAssistance.Models
 {
-    class EditorModel
+    class EditorModel : CategoryModel
     {
+        public List<Information> Information { get; set; }
     }
 }

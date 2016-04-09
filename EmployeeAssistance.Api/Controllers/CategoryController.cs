@@ -28,7 +28,7 @@ namespace EmployeeAssist.WebApi.Controllers
         // GET api/Geolocation/Countries
         [Route("api/Categories")]
         [HttpGet]
-        public Dictionary<string, string> GetCategories()
+        public List<ListItem> GetCategories()
         {
             IMongoDAL dal = new MongoDAL();
 
@@ -43,7 +43,13 @@ namespace EmployeeAssist.WebApi.Controllers
                 }
             }
 
-            return response;
+            var listItemResponse = new List<ListItem>();
+            foreach(var item in response.Keys)
+            {
+                listItemResponse.Add(new ListItem { Id = item, Value = item });
+            }
+
+            return listItemResponse;
         }
 
         [Route("api/SubCategories")]
