@@ -19,5 +19,7 @@ namespace EmployeeAssistance.Models
         public IEnumerable<ListItem> SubCategoryOptions { get; set; }
 
         public List<Information> information { get; set; }
+
+        public bool save { get; set; }
     }
 }
