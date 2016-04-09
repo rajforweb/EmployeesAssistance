@@ -12,19 +12,60 @@ namespace EmployeeAssistance.DataAccess
     {
         List<BsonDocument> IMongoDAL.GetInformation(string country, string state, string city, string category, string subcategory)
         {
-           return null;
+            var connectionString = "mongodb://localhost:27017";
+            var client = new MongoClient(connectionString);
+
+            var db = client.GetDatabase("assist");
+            var collection = db.GetCollection<BsonDocument>("employeeassist");
+
+            var builders = Builders<BsonDocument>.Filter;
+
+            var filter = builders.Eq("Country", country);
+            if (!string.IsNullOrEmpty(state))
+            {
+                filter = filter & builders.Eq("State", state);
+            }
+            if (!string.IsNullOrEmpty(city))
+            {
+                filter = filter & builders.Eq("City", city);
+            }
+
+            filter = filter & builders.Eq("Category", category)
+             & builders.Eq("SubCategory", subcategory);
+
+            List<BsonDocument> result = collection.Find(filter).ToList();
+            return result;
         }
 
         List<BsonDocument> IMongoDAL.GetCategorySubCategory()
         {
-            return null;
+            var connectionString = "mongodb://localhost:27017";
+            var client = new MongoClient(connectionString);
+
+            var db = client.GetDatabase("assist");
+            var collection = db.GetCollection<BsonDocument>("category");
+
+            List<BsonDocument> result = collection.AsQueryable().ToList();
+            return result;
         }
 
         List<BsonDocument> IMongoDAL.GetSubCategory(string Category)
         {
-            return null;
+            var connectionString = "mongodb://localhost:27017";
+            var client = new MongoClient(connectionString);
+
+            var db = client.GetDatabase("assist");
+            var collection = db.GetCollection<BsonDocument>("category");
+
+            var builders = Builders<BsonDocument>.Filter;
+
+            var filter = builders.Eq("Category", Category);
+
+            List<BsonDocument> result = collection.Find(filter).ToList();
+            return result;
+
         }
-               
+
 
         void IMongoDAL.Insert(string country, string state, string city, string category, string subcategory, int Likes, string Description, DateTime PostDate)
         {
@@ -33,17 +74,19 @@ namespace EmployeeAssistance.DataAccess
 
             var db = client.GetDatabase("assist");
             var collection = db.GetCollection<BsonDocument>("employeeassist");
-
+            DateTime time = DateTime.Now;
+            string formatedTime = "";
+            formatedTime = time.ToString("MM/dd/yyyy");   // 07/21/2007 
             var record = new BsonDocument
             {
                 { "Country" , country },
                 { "State", state},
                 { "City", city },
                 { "Category", category },
-                { "SubCategory" , subcategory },               
+                { "SubCategory" , subcategory },
                 { "Likes" , Likes },
                 { "Description" , Description },
-                { "PostDate", PostDate }
+                { "PostDate", formatedTime }
 
             };
 
@@ -53,7 +96,19 @@ namespace EmployeeAssistance.DataAccess
 
         void IMongoDAL.InsertCategorySubCategory(string category, string subcategory)
         {
-            
+            var connectionString = "mongodb://localhost:27017";
+            var client = new MongoClient(connectionString);
+
+            var db = client.GetDatabase("assist");
+            var collection = db.GetCollection<BsonDocument>("category");
+
+            var record = new BsonDocument
+            {
+                { "Category", category },
+                { "SubCategory" , subcategory },
+            };
+
+            collection.InsertOne(record);
         }
 
     }
