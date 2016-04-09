@@ -8,7 +8,7 @@ namespace EmployeeAssistance.Models
 {
     public class ListItem
     {
-        string Id { get; set; }
-        string Value { get; set; }
+        public string Id { get; set; }
+        public string Value { get; set; }
     }
 }

@@ -8,8 +8,11 @@ using System.Web.Mvc;
 
 namespace EmployeeAssistance.Controllers
 {
-    public class EditoryController : Controller
+    public class EditorController : Controller
     {
+        List<ListItem> defaultListItem = new List<ListItem>() { new ListItem() { Id = "", Value = "---select---" } };
+        // GET: Search
+
         // GET: Editory
         public ActionResult Index()
         {
@@ -17,10 +20,10 @@ namespace EmployeeAssistance.Controllers
             CategoryRepository catRepo = new CategoryRepository();
             ReaderViewModel model = new ReaderViewModel();
             model.CountryOptions = repo.GetCountry();
-            model.StateOptions = repo.GetStates();
-            model.CityOptions= repo.GetCity();
+            model.StateOptions = defaultListItem;
+            model.CityOptions= defaultListItem;
             model.CategoryOptions = catRepo.GetCategory();
-            //model.SubCategoryOptions = catRepo.GetSubCategory();
+            model.SubCategoryOptions = catRepo.GetSubCategory();
 
             return View(model);
         }
@@ -28,16 +31,18 @@ namespace EmployeeAssistance.Controllers
         [HttpPost]
         public ActionResult Index(ReaderViewModel model)
         {
-            ReaderRepository repo = new ReaderRepository();
-            CategoryRepository catRepo = new CategoryRepository();
-            ReaderViewModel model = new ReaderViewModel();
-            model.CountryOptions = repo.GetCountry();
-            model.StateOptions = repo.GetStates();
-            model.CityOptions = repo.GetCity();
-            model.CategoryOptions = catRepo.GetCategory();
-            //model.SubCategoryOptions = catRepo.GetSubCategory();
+            EditorRepository repo = new EditorRepository();
+            repo.AddAssistData(model);
 
-            return View(model);
+            ReaderRepository repoReader = new ReaderRepository();
+            CategoryRepository catRepo = new CategoryRepository();
+            ReaderViewModel models = new ReaderViewModel();
+            model.CountryOptions = repoReader.GetCountry();
+            model.StateOptions = defaultListItem;
+            model.CityOptions = defaultListItem;
+            model.CategoryOptions = catRepo.GetCategory();
+
+            return View(models);
         }
     }
 }
