@@ -17,12 +17,31 @@ namespace EmployeeAssistance.DataAccess
 
         List<BsonDocument> IMongoDAL.GetCategorySubCategory()
         {
-            return null;
+            var connectionString = "mongodb://localhost:27017";
+            var client = new MongoClient(connectionString);
+
+            var db = client.GetDatabase("assist");
+            var collection = db.GetCollection<BsonDocument>("category");
+
+            List<BsonDocument> result = collection.AsQueryable().ToList();
+            return result;
         }
 
         List<BsonDocument> IMongoDAL.GetSubCategory(string Category)
         {
-            return null;
+            var connectionString = "mongodb://localhost:27017";
+            var client = new MongoClient(connectionString);
+
+            var db = client.GetDatabase("assist");
+            var collection = db.GetCollection<BsonDocument>("category");
+
+            var builders = Builders<BsonDocument>.Filter;
+
+            var filter = builders.Eq("Category", Category);
+
+            List<BsonDocument> result = collection.Find(filter).ToList();
+            return result;
+            
         }
                
 
@@ -33,7 +52,7 @@ namespace EmployeeAssistance.DataAccess
 
             var db = client.GetDatabase("assist");
             var collection = db.GetCollection<BsonDocument>("employeeassist");
-
+            var time = DateTime.Now;
             var record = new BsonDocument
             {
                 { "Country" , country },
@@ -43,7 +62,7 @@ namespace EmployeeAssistance.DataAccess
                 { "SubCategory" , subcategory },               
                 { "Likes" , Likes },
                 { "Description" , Description },
-                { "PostDate", PostDate }
+                { "PostDate", time }
 
             };
 
@@ -53,7 +72,19 @@ namespace EmployeeAssistance.DataAccess
 
         void IMongoDAL.InsertCategorySubCategory(string category, string subcategory)
         {
-            
+            var connectionString = "mongodb://localhost:27017";
+            var client = new MongoClient(connectionString);
+
+            var db = client.GetDatabase("assist");
+            var collection = db.GetCollection<BsonDocument>("category");
+
+            var record = new BsonDocument
+            {
+                { "Category", category },
+                { "SubCategory" , subcategory },
+            };
+
+            collection.InsertOne(record);
         }
 
     }
