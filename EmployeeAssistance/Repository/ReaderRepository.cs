@@ -25,8 +25,29 @@ namespace EmployeeAssistance.Repository
             }
 
             var response = new List<ListItem>();
+            var usItem = new ListItem();
 
-            output.ToList().ForEach(item => response.Add(new ListItem() { Id = item.Key, Value = item.Value }));
+            output.ToList().ForEach(
+                
+                item =>
+                {
+                    if (!string.IsNullOrEmpty(item.Key) && !item.Key.Equals("231", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        response.Add(new ListItem() { Id = item.Key, Value = item.Value });
+                    }
+                    else if (!string.IsNullOrEmpty(item.Key))
+                    {
+                        usItem = new ListItem() { Id = item.Key, Value = item.Value };
+                    }
+                    else
+                    {
+                    }
+                });
+
+            if(usItem != null)
+            {
+                response.Insert(0, usItem);
+            }
 
             return response;
 
