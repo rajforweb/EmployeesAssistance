@@ -10,7 +10,7 @@ namespace EmployeeAssistance.Repository
 {
     public class EditorRepository
     {
-        string BaseAddress = "http://localhost:52886";
+        string BaseAddress = "http://192.168.1.33:8080/EmployeeAssistance.Api";
 
         //call API
         public void AddAssistData(ReaderViewModel model)

@@ -11,27 +11,29 @@
             <fieldset>
                 <fieldset class="form-group">
                     <div class="row col-sm-6">
-                        <div class="col-sm-12">
-                            <button class="btn btn-link" data-toggle="modal" data-target="#AddCategoryModal">Didn't find a category? Click here to add one</button>
+                        <div class="col-xs-12">
+                            <button class="btn btn-link" data-toggle="modal" data-target="#AddCategoryModal">Didn't find a category? </button>
                         </div>
                     </div>
                     <div class="row col-sm-6 col-sm-offset-0">
                         <div class="col-sm-12">
-                            <button class="btn btn-link" data-toggle="modal" data-target="#AddSubCategoryModal">Didn't find a Sub category? Click here to add one</button>
+                            <button class="btn btn-link" data-toggle="modal" data-target="#AddSubCategoryModal">Didn't find a Sub category? </button>
                         </div>
                     </div>
                 </fieldset>
             </fieldset>
             <fieldset class="form-group"></fieldset>
           
-            <div>
-                <div class="row col-sm-4">
-                    Enter the Description :
+            <fieldset class="form-group">
+                <div>
+                    <div class="row col-sm-4">
+                        <b> Enter the Description :</b>
+                    </div>
+                    <div class="row col-sm-8">
+                        @Html.TextAreaFor(model => model.information[0].Description, 5, 35, null)
+                    </div>
                 </div>
-                <div class="row col-sm-8">
-                    @Html.TextAreaFor(model => model.information[0].Description, 5, 70, null)
-                </div>
-            </div>           
+            </fieldset>        
             <br />
             <center>
                 <input class="btn btn-primary" type="submit" value="Submit">
@@ -62,7 +64,7 @@
                     <!-- Modal Body -->
                     <div class="modal-body">
 
-                        <form action="/Category/AddCategory" method="post">
+                        <form action="http://192.168.1.33:8080/EmployeeAssistance/Category/AddCategory" method="post">
                             <div class="form-group">
                                 <label for="Category">Category</label>
                                 @Html.TextBoxFor(m => m.Category, new { @class = "form-control", @placeholder = "Enter category" })
@@ -102,7 +104,7 @@
                     </div>
                     <!-- Modal Body -->
                     <div class="modal-body">
-                        <form action="/Category/AddSubCategory" method="post">
+                        <form action="http://192.168.1.33:8080/EmployeeAssistance/Category/AddSubCategory" method="post">
                             <div class="form-group">
                                 <label for="Category" class="col-sm-12">Category</label>
                                 @Html.DropDownListFor(m => m.Category,

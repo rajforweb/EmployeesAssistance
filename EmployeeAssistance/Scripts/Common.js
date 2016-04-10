@@ -84,7 +84,7 @@
     });
 
     $("#btnLikes").on('click', function () {
-        var selector = this.closest(".information").find(".Information-hidden");
+        var selector = $(this.closest(".information")).find(".Information-hidden");
         updateLikes(this.value, selector);
     });
 });

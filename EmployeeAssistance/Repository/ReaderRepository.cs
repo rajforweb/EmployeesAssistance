@@ -10,7 +10,7 @@ namespace EmployeeAssistance.Repository
 {
     public class ReaderRepository
     {
-        string BaseAddress = "http://localhost:52886";
+        string BaseAddress = "http://192.168.1.33:8080/EmployeeAssistance.Api";
         public List<ListItem> GetCountry()
         {
             //call API

@@ -41,13 +41,14 @@ namespace EmployeeAssistance.Controllers
             EditorRepository repo = new EditorRepository();
             repo.AddAssistData(model);
 
+            CategoryRepository catRepo = new CategoryRepository();
             ReaderRepository repoReader = new ReaderRepository();
             //CategoryRepository catRepo = new CategoryRepository();
             //ReaderViewModel models = new ReaderViewModel();
             model.CountryOptions = repoReader.GetCountry();
-            //model.StateOptions = defaultListItem;
-            //model.CityOptions = defaultListItem;
-            //model.CategoryOptions = catRepo.GetCategory();
+            model.CategoryOptions = catRepo.GetCategory();
+            model.SubCategoryOptions = catRepo.GetSubCategory();
+          
             model.save = true;
             model.information[0].Description = "";
             return View(model);
