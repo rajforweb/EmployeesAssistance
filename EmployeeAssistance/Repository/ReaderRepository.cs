@@ -49,6 +49,8 @@ namespace EmployeeAssistance.Repository
                 response.Insert(0, usItem);
             }
 
+            response.Insert(0,new ListItem { Id = "--select--", Value = "--select--" });
+
             return response;
 
         }
