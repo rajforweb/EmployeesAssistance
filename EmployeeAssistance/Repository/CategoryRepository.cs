@@ -9,7 +9,7 @@ namespace EmployeeAssistance.Repository
 {
     public class CategoryRepository
     {
-        string BaseAddress = "http://localhost:52886";
+        string BaseAddress = "http://192.168.1.33:8080/EmployeeAssistance.Api";
         public void AddCategory(CategoryModel model)
         {
             //call API
